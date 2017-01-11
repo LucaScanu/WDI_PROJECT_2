@@ -66,3 +66,7 @@ touch controllers/authentications.js && users.js && statics.js && surfspots.js
 - define function for the statics controllers and link it up with the webRoutes file
 
 - Define functions for the authenticationsRegister and authenticationLogin for authentications controllers. IN this file we need to require the user model, the config file and the jsonwebtoken package. this package will create jwt tokens that will encrypt our clear passwords
+
+- Require authentications controllers into the apiRoutes file
+
+touch index.html
