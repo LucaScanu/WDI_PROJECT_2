@@ -58,3 +58,5 @@ touch controllers/authentications.js && users.js && statics.js && surfspots.js
 - Create the two models for user and surfspot.
 
 - In our user model we are defining functions to store a clear password and encrypt it(passwordHash) and validate authentication of correctly entered usernames and passwords.
+
+- Set up users and surfspots controllers
