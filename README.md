@@ -70,3 +70,5 @@ touch controllers/authentications.js && users.js && statics.js && surfspots.js
 - Require authentications controllers into the apiRoutes file
 
 touch index.html
+
+- Require express-jwt package into our server.js file and set the middleware that will allows us to check for tokens
