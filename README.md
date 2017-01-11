@@ -59,4 +59,10 @@ touch controllers/authentications.js && users.js && statics.js && surfspots.js
 
 - In our user model we are defining functions to store a clear password and encrypt it(passwordHash) and validate authentication of correctly entered usernames and passwords.
 
-- Set up users and surfspots controllers
+- Define functions for the users and surfspots controllers.
+
+- Link users/controllers functions to apiRoutes
+
+- define function for the statics controllers and link it up with the webRoutes file
+
+- Define functions for the authenticationsRegister and authenticationLogin for authentications controllers. IN this file we need to require the user model, the config file and the jsonwebtoken package. this package will create jwt tokens that will encrypt our clear passwords
