@@ -40,3 +40,15 @@ export mongodb connection to the PORT in the file config.js
 require the config file into the app.js file
 
 run nodemon and test the app. At this point we should get the message 'Express has started on port: 3000' in our terminal.
+
+- Require express package in our apiRoutes.js and webRoutes.js files
+
+- Require apiRoutes and webRoutes in our express file
+
+- Create a controllers folder and corresponding files to define functions to handle routes:
+
+mkdir controllers
+
+touch controllers/authentications.js && users.js && statics.js && surfspots.js
+
+- Create a models folder and corresponding files to create our database:
