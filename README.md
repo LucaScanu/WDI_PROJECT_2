@@ -80,3 +80,11 @@ touch index.html
 - Create src folder with js and scss folder and their files
 
 - Set up gulpfile
+
+- Link html file to stylesheets and scripts
+
+- Build a map objet in map.js to show the site's map in the html file
+
+- defined initMap;
+
+- As per documentation we are required to style the map via scss in order for it to show on the page.

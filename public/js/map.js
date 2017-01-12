@@ -1,0 +1,1 @@
+"use strict";var googleMap=googleMap||{},google=google;googleMap.initMap=function(){var o=document.getElementById("map"),g={center:new google.maps.LatLng(13.8302704,17.8480856),zoom:2,mapTypeId:google.maps.MapTypeId.ROADMAP};this.map=new google.maps.Map(o,g)},$(googleMap.initMap.bind(googleMap));
