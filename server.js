@@ -8,7 +8,7 @@ const mongoose       = require('mongoose');
 
 //*** The expressJWT package authenticates users that are logging in
 //*** with a tokens
-const expressJWT     = require('express-jwt');
+// const expressJWT     = require('express-jwt');
 
 
 const app            = express();
@@ -17,7 +17,8 @@ const apiRouter      = require('./config/apiRoutes');
 const webRouter      = require('./config/webRoutes');
 
 //*******connecting mongoose model************///
-mongoose.connect(config.db);
+const databaseUrl    = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/surferparadise-api';
+mongoose.connect(databaseUrl);
 
 //********setting up middleware*********////
 app.use(morgan('dev'));
@@ -28,14 +29,16 @@ app.use(express.static(`${__dirname}/public`));
 
 //** setting up the expressJWT middleware ***//
 // If a token is found then the app will run as normal//
-app.use('/api', expressJWT({ secret: config.secret })
-  .unless({
-    path: [
-      { url: '/api/register', methods: ['POST'] },
-      { url: '/api/login',    methods: ['POST'] }
-    ]
-  }));
-  
+// app.use('/api', expressJWT({ secret: config.secret })
+//   .unless({
+//     path: [
+//       { url: '/api/register', methods: ['POST'] },
+//       { url: '/api/login',    methods: ['POST'] }
+//     ]
+//   }));
+
+app.use('/api', apiRouter);
+
 //jwtErrorHandler is a method that return a simpler err message //
 // if any
 app.use(jwtErrorHandler);

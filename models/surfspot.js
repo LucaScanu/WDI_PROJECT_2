@@ -5,8 +5,9 @@ const surfspotSchema = new mongoose.Schema({
   location: String,
   lat: String,
   lng: String,
-  image: String 
-
+  image: String
 });
+
+surfspotSchema.set('toJSON', { getters: true, virtuals: false });
 
 module.exports        = mongoose.model('Surfspot', surfspotSchema);

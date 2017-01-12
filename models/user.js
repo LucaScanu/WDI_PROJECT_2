@@ -27,8 +27,8 @@ userSchema
   .validate(validatePasswordHash);
 
 userSchema
-  .path('username')
-  .validate(validateUsername);
+  .path('email')
+  .validate(validateEmail);
 
 userSchema.methods.validatePassword = validatePassword;
 
@@ -61,9 +61,9 @@ function validatePasswordHash() {
   }
 }
 
-function validateUsername(username) {
-  if (!validator.isUsername(username)) {
-    return this.invalidate('username', 'username is not recognized');
+function validateEmail(email) {
+  if (!validator.isEmail(email)) {
+    return this.invalidate('email', 'email is not recognized');
   }
 }
 

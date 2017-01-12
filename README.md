@@ -72,3 +72,7 @@ touch controllers/authentications.js && users.js && statics.js && surfspots.js
 touch index.html
 
 - Require express-jwt package into our server.js file and set the middleware that will allows us to check for tokens
+
+- Test app with Insomnia if authenticationLogin and authenticationsRegister are working.
+
+- Create db folder and seeds.js folder. Created two entries and ran node db/seeds. tested it with Insomnia
