@@ -3,7 +3,7 @@ const router          = express.Router();
 
 const authentications = require('../controllers/authentications');
 const users           = require('../controllers/users');
-const surfspots       = require('../controllers/surfspots');
+const surfs           = require('../controllers/surfs');
 
 router.route('/register')
 .post(authentications.register);
@@ -17,7 +17,7 @@ router.route('/users/:id')
   .put(users.update)
   .delete(users.delete);
 
-router.route('/surfspots')
-  .get(surfspots.index);
+router.route('/surfs')
+  .get(surfs.index);
 
 module.exports        = router;

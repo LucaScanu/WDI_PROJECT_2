@@ -49,17 +49,17 @@ run nodemon and test the app. At this point we should get the message 'Express h
 
 mkdir controllers
 
-touch controllers/authentications.js && users.js && statics.js && surfspots.js
+touch controllers/authentications.js && users.js && statics.js && surfs.js
 
 - Create a models folder and corresponding files to create our database:
 
-- Require mongoose, bcrypt and validator in our user model file and mongoose in our surfspot model file
+- Require mongoose, bcrypt and validator in our user model file and mongoose in our surf model file
 
-- Create the two models for user and surfspot.
+- Create the two models for user and surf.
 
 - In our user model we are defining functions to store a clear password and encrypt it(passwordHash) and validate authentication of correctly entered usernames and passwords.
 
-- Define functions for the users and surfspots controllers.
+- Define functions for the users and surfs controllers.
 
 - Link users/controllers functions to apiRoutes
 
@@ -88,3 +88,5 @@ touch index.html
 - defined initMap;
 
 - As per documentation we are required to style the map via scss in order for it to show on the page.
+
+Create a function to display a pin to mark our surfs

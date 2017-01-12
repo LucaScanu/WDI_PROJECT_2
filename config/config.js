@@ -1,5 +1,5 @@
 module.exports = {
   port: process.env.PORT || 3000,
-  db: 'mongodb://localhost:27017/surferparadise-api',
+  db: 'mongodb://localhost:27017/surferparadiseapi',
   secret: process.env.PORT || 'Secret Data'
 };
