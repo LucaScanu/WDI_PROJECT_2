@@ -5,6 +5,8 @@ mongoose.connect(databaseUrl);
 
 const Surfspot      = require('../models/surfspot');
 
+Surfspot.collection.drop();
+
 const surfspot1     = new Surfspot({
   name: 'Canggu',
   location: 'Bali',

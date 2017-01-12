@@ -76,3 +76,7 @@ touch index.html
 - Test app with Insomnia if authenticationLogin and authenticationsRegister are working.
 
 - Create db folder and seeds.js folder. Created two entries and ran node db/seeds. tested it with Insomnia
+
+- Create src folder with js and scss folder and their files
+
+- Set up gulpfile
