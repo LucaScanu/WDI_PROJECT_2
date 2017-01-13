@@ -4,11 +4,12 @@ const router          = express.Router();
 const authentications = require('../controllers/authentications');
 const users           = require('../controllers/users');
 const surfs           = require('../controllers/surfs');
+const proxies         = require('../controllers/proxies');
 
 router.route('/register')
-.post(authentications.register);
+  .post(authentications.register);
 router.route('/login')
-    .post(authentications.login);
+  .post(authentications.login);
 
 router.route('/users')
   .get(users.index);
@@ -20,4 +21,7 @@ router.route('/users/:id')
 router.route('/surfs')
   .get(surfs.index);
 
-module.exports        = router;
+router.route('/weather/:lat/:lng')
+  .get(proxies.weather);
+
+module.exports = router;

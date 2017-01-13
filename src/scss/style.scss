@@ -7,3 +7,14 @@ margin: 0;
   height: 100vh;
   margin: 0 auto;
 }
+
+.modal-content, .modal-body {
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+}
