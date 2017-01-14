@@ -92,3 +92,5 @@ touch index.html
 Create a function to display a pin to mark our surfs and after that create a function which I will call surfInfo that will add and display some info about our location when the marker is clicked.
 
 Got stuck in visualising the weather data I wanted in my info window and spent some time trying to get my head round it. Tried to use a proxy request to get the proper data but eventually had be helped by Alex.
+
+Created a proxies controllers to house the promise request function 

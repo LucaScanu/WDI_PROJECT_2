@@ -31,10 +31,10 @@ app.surfInfo         = function(surf, marker) {
         <!-- Tab panes -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="home">
-            ${data}
+            ${data.summary}
           </div>
           <div role="tabpanel" class="tab-pane" id="weather">
-            <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},6,menu,marker" width="750" height="400" frameborder="0"></iframe>
+            <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},8,in:24,100m,temp,menu,marker,metric.wind.km/h" width="750" height="500" frameborder="0"></iframe>
           </div>
           <div role="tabpanel" class="tab-pane" id="gallery">
           </div>
