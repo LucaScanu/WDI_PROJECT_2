@@ -103,3 +103,5 @@ Created an App.register function to add a registration form to my html
 Created a function to listen to the submitting of the form and to create a jwt token on submission
 
 Created a function and named it ajaxRequest to group al of our ajax requests: one used in our membersIndex function and one used in our handleForm function
+
+Created a login function
