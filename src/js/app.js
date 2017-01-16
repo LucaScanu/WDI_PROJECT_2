@@ -1,6 +1,14 @@
 const App              = App || {};
 const google           = google;
 
+App.init               = function() {
+  this.apiUrl          = 'http://localhost:3000/api';
+  this.$main           = $('main');
+  // this.initMap();
+  $('.register').on('click', this.register.bind(this));
+  $('main').on('submit', 'form', this.handleForm);
+};
+
 App.surfInfo           = function(surf, marker) {
   google.maps.event.addListener(marker, 'click', () => {
 
@@ -73,12 +81,27 @@ App.initMap            = function() {
   this.getSurfs();
 };
 
-$(App.initMap.bind(App));
+App.handleForm = function(e) {
+  if(e) e.preventDefault();
+
+  const url    = `${App.apiUrl}${$(this).attr('action')}`;
+  const method = $(this).attr('method');
+  const data   = $(this).serialize();
+  $.ajax({
+    url,
+    method,
+    data
+  }).done((data) => {
+    console.log(data);
+  }).fail((data) => {
+    console.log(data);
+  });
+};
 
 App.register           = function(e) {
   if(e) e.preventDefault();
 
-  $('main').html(`
+  this.$main.html(`
     <h2>Register</h2>
   <form method="post" action="/register">
     <div class="form-group">
@@ -95,14 +118,8 @@ App.register           = function(e) {
     </div>
     <input class="btn btn-primary" type="submit" value="Register">
   </form>`);
-  console.log($('main'));
-};
-
-App.initAuthentication = function() {
-  
-  $('.register').on('click', App.register());
-
 };
 
 
-$(App.initAuthentication.bind(App));
+
+$(App.init.bind(App));

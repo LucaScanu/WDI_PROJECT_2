@@ -30,22 +30,21 @@ app.use(express.static(`${__dirname}/public`));
 //** setting up the expressJWT middleware ***//
 // If a token is found then the app will run as normal//
 app.use('/api', expressJWT({ secret: config.secret })
-  .unless({
-    path: [
-      { url: '/api/register', methods: ['POST'] },
-      { url: '/api/login',    methods: ['POST'] }
-    ]
-  }));
-
-app.use('/api', apiRouter);
+.unless({
+  path: [
+    { url: '/api/register', methods: ['POST'] },
+    { url: '/api/login',    methods: ['POST'] }
+  ]
+}));
 
 //jwtErrorHandler is a method that return a simpler err message //
 // if any
 app.use(jwtErrorHandler);
 
 function jwtErrorHandler(err, req, res, next){
+  console.log('this is upset');
   if (err.name !== 'UnauthorizedError') return next();
-  return res.status(401).json({ message: 'Unauthorized request.' });
+  return res.status(401).json({ message: 'Unauthorized request..' });
 }
 
 //*********connecting routes************//
