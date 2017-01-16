@@ -91,6 +91,13 @@ touch index.html
 
 Create a function to display a pin to mark our surfs and after that create a function which I will call surfInfo that will add and display some info about our location when the marker is clicked.
 
-Got stuck in visualising the weather data I wanted in my info window and spent some time trying to get my head round it. Tried to use a proxy request to get the proper data but eventually had be helped by Alex.
+Got stuck in visualising the weather data I wanted in my info window and spent some time trying to get my head round it. Tried to use a proxy request to get the proper data but eventually had to be helped by Alex.
 
-Created a proxies controllers to house the promise request function 
+Created a proxies controllers to house the promise request function and define the route into our routes file.
+
+Created a modal window to marker info instead of window
+
+Initiate authentications functions inside our main init function. Import a navigation bar from bootstrap.
+
+Created an App.register function to add a registration form to my html
+Created a function to listen to the submitting of the form and to create a jwt token on submission
