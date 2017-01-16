@@ -81,6 +81,7 @@ App.init               = function() {
 //   this.map             = new google.maps.Map(map, mapOptions);
 //   this.getSurfs();
 // };
+//****naming the setRequestHeader function and passing it into the membersIndex function's ajax request****//
 
 App.getToken = function() {
   return window.localStorage.getItem('token');
@@ -90,17 +91,28 @@ App.setToken           = function(token) {
   return window.localStorage.setItem('token', token);
 };
 
+App.setRequestHeader = function(xhr) {
+  return xhr.setRequestHeader('Authorization', `Bearer ${App.getToken()}`);
+};
+
+App.ajaxRequest      = function(url, method, data, callback) {
+  return $.ajax({
+    url,
+    method,
+    data,
+    beforeSend: this.setRequestHeader.bind(this)
+  })
+  .done(callback)
+  .fail(data => {
+    console.log(data);
+  });
+
 App.membersIndex       = function(e) {
   if(e) e.preventDefault();
 
   const url = `${this.apiUrl}/users`;
 
-  $.ajax({
-    url,
-    beforeSend: function(xhr) {
-      return xhr.setRequestHeader('Authorization', `Bearer ${App.getToken()}`);
-    }
-  }).done(data => {
+  return this.ajaxRequest(url, 'get', null, data => {
     this.$main.html(`
       <div class="card-deck-wrapper">
         <div class="card-deck">
@@ -131,14 +143,9 @@ App.handleForm = function(e) {
   const url    = `${App.apiUrl}${$(this).attr('action')}`;
   const method = $(this).attr('method');
   const data   = $(this).serialize();
-  $.ajax({
-    url,
-    method,
-    data
-  }).done((data) => {
+
+  return this.ajaxRequest(url, 'get', null, data => {
     if(data.token) App.setToken(data.token);
-  }).fail((data) => {
-    console.log(data);
   });
 };
 
