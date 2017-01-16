@@ -4,8 +4,39 @@ const databaseUrl   = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sur
 mongoose.connect(databaseUrl);
 
 const Surf      = require('../models/surf');
+const User      = require('../models/user');
+const Comment      = require('../models/comment');
 
 Surf.collection.drop();
+User.collection.drop();
+Comment.collection.drop();
+
+User.create({
+  username: 'Luca',
+  email: 'luca@luca.com',
+  password: 'password',
+  passwordConfirmation: 'password'
+}, (err, user) => {
+  Comment.create({
+    userId: user._id,
+    body: 'test test comment'
+  }, (err, comment) => {
+    const surf2     = new Surf({
+      name: 'Sennen Cove',
+      location: 'Cornwall',
+      lat: '50.0758252',
+      lng: '-5.7052955',
+      image: 'http://www.sennen-cove.com/images/surf17feb13_1.jpg'
+    });
+
+    surf2.comments.push(comment._id);
+
+    surf2.save((err, surf) => {
+      if(err) return console.log(err);
+      return console.log(`${surf.name} was saved`);
+    });
+  });
+});
 
 const surf1     = new Surf({
   name: 'Canggu',
@@ -16,19 +47,6 @@ const surf1     = new Surf({
 });
 
 surf1.save((err, surf) => {
-  if(err) return console.log(err);
-  return console.log(`${surf.name} was saved`);
-});
-
-const surf2     = new Surf({
-  name: 'Sennen Cove',
-  location: 'Cornwall',
-  lat: '50.0758252',
-  lng: '-5.7052955',
-  image: 'http://www.sennen-cove.com/images/surf17feb13_1.jpg'
-});
-
-surf2.save((err, surf) => {
   if(err) return console.log(err);
   return console.log(`${surf.name} was saved`);
 });

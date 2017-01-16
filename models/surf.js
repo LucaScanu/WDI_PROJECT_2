@@ -5,9 +5,10 @@ const surfSchema      = new mongoose.Schema({
   location: String,
   lat: String,
   lng: String,
-  img: String
+  img: String,
+  comments: [ { type: mongoose.Schema.ObjectId, ref: 'Comment' } ]
 });
 
-// surfSchema.set('toJSON', { getters: true, virtuals: false });
+surfSchema.set('toJSON', { getters: true, virtuals: false });
 
 module.exports        = mongoose.model('Surf', surfSchema);

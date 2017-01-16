@@ -1,4 +1,6 @@
 const Surf     = require('../models/surf');
+const Comment  = require('../models/comment');
+const User     = require('../models/user');
 
 // function surfsCreate(req, res) {
 //   Surf.create(req.body.surf, (err, surf) => {
@@ -9,7 +11,15 @@ const Surf     = require('../models/surf');
 // }
 
 function surfsIndex(req, res) {
-  Surf.find((err, surfs) => {
+  Surf.find({})
+  .populate({
+    path: 'comments',
+    populate: {
+      path: 'userId',
+      model: 'User'
+    }
+  })
+  .exec((err, surfs) => {
     if(err) return res.status(500).send();
     return res.status(200).json({ surfs });
   });

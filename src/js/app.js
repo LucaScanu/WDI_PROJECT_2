@@ -4,95 +4,140 @@ const google           = google;
 App.init               = function() {
   this.apiUrl          = 'http://localhost:3000/api';
   this.$main           = $('main');
-  this.initMap();
+  $('#map').hide();
   $('.register').on('click', this.register.bind(this));
   $('.login').on('click', this.login.bind(this));
+  $('.logout').on('click', this.logout.bind(this));
   $('.members').on('click', this.membersIndex.bind(this));
   $('main').on('submit', 'form', this.handleForm);
+
+  if (this.getToken()) {
+    this.loggedIn();
+  } else {
+    this.loggedOut();
+  }
 };
 
 App.loggedIn           = function() {
   $('.loggedIn').show();
   $('.loggedOut').hide();
+  this.membersIndex();
+  $('#map').show();
+  App.initMap();
 };
 
 App.loggedOut          = function() {
   $('.loggedIn').hide();
   $('.loggedOut').show();
+  this.register();
 };
 
-// App.surfInfo        = function(surf, marker) {
-//   google.maps.event.addListener(marker, 'click', () => {
-//     $
-//       .get(`http://localhost:3000/api/weather/${surf.lat}/${surf.lng}`)
-//       .done(data => {
-//         $('.modal-body').html(`
-//         <ul class="nav nav-tabs" role="tablist">
-//           <li role="presentation" class="active">
-//             <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Overview</a>
-//           </li>
-//           <li role="presentation">
-//             <a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a>
-//           </li>
-//           <li role="presentation">
-//             <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a>
-//           </li>
-//           <li role="presentation">
-//             <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
-//           </li>
-//         </ul>
-//
-//         <!-- Tab panes -->
-//         <div class="tab-content">
-//           <div role="tabpanel" class="tab-pane active" id="home">
-//             Welcome to ${surf.name},
-//             ${surf.location}.
-//             The weather for today is ${data.summary}.
-//           </div>
-//           <div role="tabpanel" class="tab-pane" id="weather">
-//             <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="900" height="500" frameborder="0"></iframe>
-//           </div>
-//           <div role="tabpanel" class="tab-pane" id="gallery">
-//
-//           </div>
-//           <div role="tabpanel" class="tab-pane" id="settings">
-//           </div>
-//         </div>`);
-//         $('.modal').modal('show');
-//       });
-//   });
-// };
-//
-// App.marker          = function(surf) {
-//   const latlng      = new google.maps.LatLng(surf.lat, surf.lng);
-//   const marker      = new google.maps.Marker({
-//     position: latlng,
-//     map: App.map
-//   });
-//   App.surfInfo(surf, marker);
-// };
-//
-// App.loopSurfs       = function(data) {
-//   $.each(data.surfs, (index, surf) => {
-//     App.marker(surf);
-//   });
-// };
-//
-// App.getSurfs        = function() {
-//   $.get('http://localhost:3000/api/surfs').done(this.loopSurfs);
-// };
-//
-// App.initMap         = function() {
-//   const map         = document.getElementById('map');
-//   const mapOptions  = {
-//     center: new google.maps.LatLng(13.8302704,17.8480856),
-//     zoom: 2,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP,
-//     styles: [{'featureType': 'administrative','elementType': 'labels.text.fill','stylers': [{'color': '#444444'}]},{'featureType': 'landscape','elementType': 'all','stylers': [{'color': '#f2f2f2'}]},{'featureType': 'poi','elementType': 'all','stylers': [{'visibility': 'off'}]},{'featureType': 'road','elementType': 'all','stylers': [{'saturation': -100},{'lightness': 45}]},{'featureType': 'road.highway','elementType': 'all','stylers': [{'visibility': 'simplified'}]},{'featureType': 'road.arterial','elementType': 'labels.icon','stylers': [{'visibility': 'off'}]},{'featureType': 'transit','elementType': 'all','stylers': [{'visibility': 'off'}]},{'featureType': 'water','elementType': 'all','stylers': [{'color': '#46bcec'},{'visibility': 'on'}]}]
-//   };
-//   this.map          = new google.maps.Map(map, mapOptions);
-//   this.getSurfs();
-// };
+App.surfInfo        = function(surf, marker) {
+  google.maps.event.addListener(marker, 'click', () => {
+    this.ajaxRequest(`http://localhost:3000/api/weather/${surf.lat}/${surf.lng}`, 'get', null, data => {
+      $('.modal-body').html(`
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Overview</a>
+            </li>
+            <li role="presentation">
+              <a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a>
+            </li>
+            <li role="presentation">
+              <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a>
+            </li>
+            <li role="presentation">
+              <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+              Welcome to ${surf.name},
+              ${surf.location}.
+              The weather for today is ${data.summary}.
+            </div>
+            <div role="tabpanel" class="tab-pane" id="weather">
+              <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="900" height="500" frameborder="0"></iframe>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="gallery">
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="settings">
+            </div>
+          </div>`);
+      $('.modal').modal('show');
+
+    // $.get(`http://localhost:3000/api/weather/${surf.lat}/${surf.lng}`)
+    //   .done(data => {
+    //     $('.modal-body').html(`
+    //     <ul class="nav nav-tabs" role="tablist">
+    //       <li role="presentation" class="active">
+    //         <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Overview</a>
+    //       </li>
+    //       <li role="presentation">
+    //         <a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a>
+    //       </li>
+    //       <li role="presentation">
+    //         <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a>
+    //       </li>
+    //       <li role="presentation">
+    //         <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
+    //       </li>
+    //     </ul>
+    //
+    //     <!-- Tab panes -->
+    //     <div class="tab-content">
+    //       <div role="tabpanel" class="tab-pane active" id="home">
+    //         Welcome to ${surf.name},
+    //         ${surf.location}.
+    //         The weather for today is ${data.summary}.
+    //       </div>
+    //       <div role="tabpanel" class="tab-pane" id="weather">
+    //         <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="900" height="500" frameborder="0"></iframe>
+    //       </div>
+    //       <div role="tabpanel" class="tab-pane" id="gallery">
+    //
+    //       </div>
+    //       <div role="tabpanel" class="tab-pane" id="settings">
+    //       </div>
+    //     </div>`);
+    //     $('.modal').modal('show');
+    });
+  });
+};
+
+App.marker          = function(surf) {
+  const latlng      = new google.maps.LatLng(surf.lat, surf.lng);
+  const marker      = new google.maps.Marker({
+    position: latlng,
+    map: App.map
+  });
+  App.surfInfo(surf, marker);
+};
+
+App.loopSurfs       = function(data) {
+  $.each(data.surfs, (index, surf) => {
+    App.marker(surf);
+  });
+};
+
+App.getSurfs        = function() {
+  $.get('http://localhost:3000/api/surfs').done(this.loopSurfs);
+};
+
+App.initMap         = function() {
+  const map         = document.getElementById('map');
+  const mapOptions  = {
+    center: new google.maps.LatLng(13.8302704,17.8480856),
+    zoom: 2,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: [{'featureType': 'administrative','elementType': 'labels.text.fill','stylers': [{'color': '#444444'}]},{'featureType': 'landscape','elementType': 'all','stylers': [{'color': '#f2f2f2'}]},{'featureType': 'poi','elementType': 'all','stylers': [{'visibility': 'off'}]},{'featureType': 'road','elementType': 'all','stylers': [{'saturation': -100},{'lightness': 45}]},{'featureType': 'road.highway','elementType': 'all','stylers': [{'visibility': 'simplified'}]},{'featureType': 'road.arterial','elementType': 'labels.icon','stylers': [{'visibility': 'off'}]},{'featureType': 'transit','elementType': 'all','stylers': [{'visibility': 'off'}]},{'featureType': 'water','elementType': 'all','stylers': [{'color': '#46bcec'},{'visibility': 'on'}]}]
+  };
+  this.map          = new google.maps.Map(map, mapOptions);
+  this.getSurfs();
+};
 
 App.register           = function(e) {
   if(e) e.preventDefault();
@@ -132,6 +177,12 @@ App.login              = function(e) {
   `);
 };
 
+App.logout = function(e) {
+  if(e) e.preventDefault();
+  this.clearToken();
+  this.loggedOut();
+};
+
 App.membersIndex       = function(e) {
   if(e) e.preventDefault();
 
@@ -155,8 +206,6 @@ App.membersIndex       = function(e) {
            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
          </div>
        </div>`);
-    }).fail(data => {
-      console.log(data);
     });
   });
 };
@@ -168,8 +217,9 @@ App.handleForm         = function(e) {
   const method = $(this).attr('method');
   const data   = $(this).serialize();
 
-  return this.ajaxRequest(url, 'get', null, data => {
+  return App.ajaxRequest(url, method, data, data => {
     if(data.token) App.setToken(data.token);
+    App.loggedIn();
   });
 };
 
@@ -198,6 +248,10 @@ App.setToken           = function(token) {
 
 App.getToken           = function() {
   return window.localStorage.getItem('token');
+};
+
+App.clearToken         = function() {
+  return window.localStorage.clear();
 };
 
 

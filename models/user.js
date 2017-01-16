@@ -6,8 +6,6 @@ const userSchema      = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
   passwordHash: { type: String, required: true }
-},{
-  timestamps: true
 });
 
 //*****The virtual method in the userSchema allow us to store a clear
@@ -32,7 +30,17 @@ userSchema
 
 userSchema.methods.validatePassword = validatePassword;
 
-
+userSchema.set('toJSON', {
+  transform: function(doc, ret) {
+    delete ret.passwordHash;
+    delete ret._id;
+    delete ret.updatedAt;
+    delete ret.createdAt;
+    delete ret.email;
+    delete ret.__v;
+    return ret;
+  }
+});
 
 function setPassword(value) {
   this._password    = value;
