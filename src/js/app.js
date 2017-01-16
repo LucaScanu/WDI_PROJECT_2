@@ -4,13 +4,24 @@ const google           = google;
 App.init               = function() {
   this.apiUrl          = 'http://localhost:3000/api';
   this.$main           = $('main');
-  // this.initMap();
+  this.initMap();
   $('.register').on('click', this.register.bind(this));
+  $('.login').on('click', this.login.bind(this));
   $('.members').on('click', this.membersIndex.bind(this));
   $('main').on('submit', 'form', this.handleForm);
 };
 
-// App.surfInfo           = function(surf, marker) {
+App.loggedIn           = function() {
+  $('.loggedIn').show();
+  $('.loggedOut').hide();
+};
+
+App.loggedOut          = function() {
+  $('.loggedIn').hide();
+  $('.loggedOut').show();
+};
+
+// App.surfInfo        = function(surf, marker) {
 //   google.maps.event.addListener(marker, 'click', () => {
 //     $
 //       .get(`http://localhost:3000/api/weather/${surf.lat}/${surf.lng}`)
@@ -52,34 +63,34 @@ App.init               = function() {
 //   });
 // };
 //
-// App.marker             = function(surf) {
-//   const latlng         = new google.maps.LatLng(surf.lat, surf.lng);
-//   const marker         = new google.maps.Marker({
+// App.marker          = function(surf) {
+//   const latlng      = new google.maps.LatLng(surf.lat, surf.lng);
+//   const marker      = new google.maps.Marker({
 //     position: latlng,
 //     map: App.map
 //   });
 //   App.surfInfo(surf, marker);
 // };
 //
-// App.loopSurfs          = function(data) {
+// App.loopSurfs       = function(data) {
 //   $.each(data.surfs, (index, surf) => {
 //     App.marker(surf);
 //   });
 // };
 //
-// App.getSurfs           = function() {
+// App.getSurfs        = function() {
 //   $.get('http://localhost:3000/api/surfs').done(this.loopSurfs);
 // };
 //
-// App.initMap            = function() {
-//   const map            = document.getElementById('map');
-//   const mapOptions     = {
+// App.initMap         = function() {
+//   const map         = document.getElementById('map');
+//   const mapOptions  = {
 //     center: new google.maps.LatLng(13.8302704,17.8480856),
 //     zoom: 2,
 //     mapTypeId: google.maps.MapTypeId.ROADMAP,
 //     styles: [{'featureType': 'administrative','elementType': 'labels.text.fill','stylers': [{'color': '#444444'}]},{'featureType': 'landscape','elementType': 'all','stylers': [{'color': '#f2f2f2'}]},{'featureType': 'poi','elementType': 'all','stylers': [{'visibility': 'off'}]},{'featureType': 'road','elementType': 'all','stylers': [{'saturation': -100},{'lightness': 45}]},{'featureType': 'road.highway','elementType': 'all','stylers': [{'visibility': 'simplified'}]},{'featureType': 'road.arterial','elementType': 'labels.icon','stylers': [{'visibility': 'off'}]},{'featureType': 'transit','elementType': 'all','stylers': [{'visibility': 'off'}]},{'featureType': 'water','elementType': 'all','stylers': [{'color': '#46bcec'},{'visibility': 'on'}]}]
 //   };
-//   this.map             = new google.maps.Map(map, mapOptions);
+//   this.map          = new google.maps.Map(map, mapOptions);
 //   this.getSurfs();
 // };
 
@@ -105,7 +116,7 @@ App.register           = function(e) {
   </form>`);
 };
 
-App.login             = function(e) {
+App.login              = function(e) {
   if(e) e.preventDefault();
   this.$main.html(`
     <h2>Login</h2>
