@@ -22,11 +22,6 @@ a{
   height: 350px;
 }
 
-.navbar-nav>li>a:hover {
-  background-color: transparent;
-  text-decoration: none;
-}
-
 #map {
   width: 100%;
   height: 94vh;
@@ -51,22 +46,32 @@ div.navbar-header {
   padding: 10px;
 }
 
+.navbar-nav {
+  width: 600px;
+}
+
+.navbar-nav>li>a:hover {
+  background-color: transparent;
+  text-decoration: none;
+}
+
 ul.nav.navbar-nav {
   padding: 10px;
 }
 
-// .navbar-nav>li>a {
-//   width: 30%;
-// }
-//
-// .navbar-nav>li>a:hover {
-//   background-color: none;
-// }
-//
-// .nav>li>a>img {
-//   max-width: 30%;
-//   border-radius: 10px;
-// }
+li.nav-item {
+  width: 67px;
+}
+
+ul.nav.navbar-nav.navbar-right {
+  width: 250px;
+}
+
+.nav>li>a>img {
+  max-width: 70%;
+  border-radius: 15px;
+  // float: left;
+}
 
 iframe {
   width: 100%;
