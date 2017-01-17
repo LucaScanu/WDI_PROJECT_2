@@ -43,7 +43,7 @@ const surf1     = new Surf({
   location: 'Bali',
   lat: '-8.6428221',
   lng: '115.1175409',
-  img: 'http://www.placestoseeinyourlifetime.com/wp-content/uploads/2015/03/Bali-Canggu-6.jpg'
+  img: 'https://static.pexels.com/photos/70223/pexels-photo-70223.jpeg'
 });
 
 surf1.save((err, surf) => {
@@ -96,7 +96,7 @@ const surf6     = new Surf({
   location: 'Guatemala',
   lat: '13.917221',
   lng: '-91.0777439',
-  img: 'https://rusticbackpacker.files.wordpress.com/2013/01/chilaxing.jpg?w=300&h=214'
+  img: 'https://static.pexels.com/photos/133006/pexels-photo-133006.jpeg'
 });
 
 surf6.save((err, surf) => {
@@ -149,7 +149,7 @@ const surf10     = new Surf({
   location: 'Mexico',
   lat: '20.8699963',
   lng: '-105.4439873',
-  img: 'http://www.amorboutiquehotel.com/wp-content/uploads/photo-gallery/sayulita-surf.jpg'
+  img: 'https://static.pexels.com/photos/129459/pexels-photo-129459.jpeg'
 });
 
 surf10.save((err, surf) => {
@@ -294,7 +294,7 @@ const surf21     = new Surf({
   location: 'Brasil',
   lat: '-27.6094088',
   lng: '-48.7647741',
-  img: 'https://souturistadomundo.files.wordpress.com/2014/12/10.jpeg'
+  img: 'https://static.pexels.com/photos/4948/sea-sunset-sunny-beach.jpeg'
 });
 
 surf21.save((err, surf) => {
@@ -346,7 +346,7 @@ const surf25     = new Surf({
   location: 'Fiji',
   lat: '-17.8575796',
   lng: '177.2001423',
-  img: 'http://www.surfertoday.com/images/stories/tavaruareef.jpg'
+  img: 'https://static.pexels.com/photos/139507/pexels-photo-139507.jpeg'
 });
 
 surf25.save((err, surf) => {

@@ -44,12 +44,6 @@ App.surfInfo           = function(surf, marker) {
             <li role="presentation">
               <a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a>
             </li>
-            <li role="presentation">
-              <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a>
-            </li>
-            <li role="presentation">
-              <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
-            </li>
           </ul>
 
           <!-- Tab panes -->
@@ -58,15 +52,15 @@ App.surfInfo           = function(surf, marker) {
               Welcome to ${surf.name},
               ${surf.location},
               The weather for today is ${data.summary}.
-              <img src="${surf.img}">
+              <img class="mainpic" src="${surf.img}">
             </div>
             <div role="tabpanel" class="tab-pane" id="weather">
               <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="1000" height="700" frameborder="0"></iframe>
             </div>
-            <div role="tabpanel" class="tab-pane" id="gallery">
-            </div>
-            <div role="tabpanel" class="tab-pane" id="settings">
-            </div>
+             <div role="tabpanel" class="tab-pane" id="gallery">
+             </div>
+             <div role="tabpanel" class="tab-pane" id="settings">
+             </div>
           </div>`);
       $('.modal').modal('show');
     });
