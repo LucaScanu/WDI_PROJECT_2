@@ -61,7 +61,7 @@ App.surfInfo           = function(surf, marker) {
               <img src="${surf.img}">
             </div>
             <div role="tabpanel" class="tab-pane" id="weather">
-              <iframe src="https://www.ventusky.com/?p=${surf.lat};${surf.lng};1&l=wind-wave&t=20170117/15 width="1000" height="750" frameborder="0"></iframe>
+              <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="1000" height="700" frameborder="0"></iframe>
             </div>
             <div role="tabpanel" class="tab-pane" id="gallery">
             </div>
@@ -77,7 +77,8 @@ App.marker             = function(surf) {
   const latlng         = new google.maps.LatLng(surf.lat, surf.lng);
   const marker         = new google.maps.Marker({
     position: latlng,
-    map: App.map
+    map: App.map,
+    icon: '/images/surfing.png'
   });
   App.surfInfo(surf, marker);
 };
