@@ -3,6 +3,18 @@ font-family: 'Original Surfer', cursive;
 margin: 0;
 width: 100%;
 height: 100vh;
+background-image: url("../images/home.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+body.clear {
+  background: none;
+  background-color: #46bcec;
+}
+
+a{
+  color: #f2f2f2;
 }
 
 .navbar-nav>li>a:hover {
@@ -12,13 +24,14 @@ height: 100vh;
 
 #map {
   width: 100%;
-  height: 100vh;
+  height: 94vh;
   margin: 0 auto;
 }
 
 .modal-content, .modal-body {
   background: #7B85AD;
-  height: 80vh;
+  width: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -26,6 +39,14 @@ height: 100vh;
 }
 
 .modal-content, .modal-body, .form-group {
+  padding: 10px;
+}
+
+div.navbar-header {
+  padding: 10px;
+}
+
+ul.nav.navbar-nav {
   padding: 10px;
 }
 
@@ -42,33 +63,6 @@ height: 100vh;
 //   border-radius: 10px;
 // }
 
-.landingpage {
- background-image: url("../images/home.jpg");
- background-size: cover;
- background-repeat: no-repeat;
- width: 100%;
- height: 100vh;
-}
-
 iframe {
   width: 100%;
-}
-
-#container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-}
-
-#a,
-#b {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-#a {
-    z-index: 10;
 }

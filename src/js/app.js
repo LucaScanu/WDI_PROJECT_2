@@ -8,7 +8,7 @@ App.init               = function() {
   $('.login').on('click', this.login.bind(this));
   $('.logout').on('click', this.logout.bind(this));
   $('.members').on('click', this.membersIndex.bind(this));
-  $('main').on('submit', 'form', this.handleForm);
+  $('.modal-body').on('submit', 'form', this.handleForm);
   if (this.getToken()) {
     this.loggedIn();
   } else {
@@ -19,11 +19,18 @@ App.init               = function() {
 App.loggedIn           = function() {
   $('.loggedIn').show();
   $('.loggedOut').hide();
+  App.initMap();
+  App.getSurfs();
+  $('.modal').modal('hide');
+  $('body').addClass('clear');
+  $('navbar-nav').addClass('clear');
 };
 
 App.loggedOut          = function() {
   $('.loggedIn').hide();
   $('.loggedOut').show();
+  $('body').removeClass('clear');
+  $('navbar-nav').removeClass('clear');
 };
 
 App.surfInfo           = function(surf, marker) {
@@ -49,12 +56,12 @@ App.surfInfo           = function(surf, marker) {
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
               Welcome to ${surf.name},
-              ${surf.img},
-              ${surf.location}.
+              ${surf.location},
               The weather for today is ${data.summary}.
+              <img src="${surf.img}">
             </div>
             <div role="tabpanel" class="tab-pane" id="weather">
-              <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="900" height="600" frameborder="0"></iframe>
+              <iframe src="https://www.ventusky.com/?p=${surf.lat};${surf.lng};1&l=wind-wave&t=20170117/15 width="1000" height="750" frameborder="0"></iframe>
             </div>
             <div role="tabpanel" class="tab-pane" id="gallery">
             </div>
