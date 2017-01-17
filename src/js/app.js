@@ -19,7 +19,6 @@ App.init               = function() {
 App.loggedIn           = function() {
   $('.loggedIn').show();
   $('.loggedOut').hide();
-  this.membersIndex();
 };
 
 App.loggedOut          = function() {
@@ -50,6 +49,7 @@ App.surfInfo           = function(surf, marker) {
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
               Welcome to ${surf.name},
+              ${surf.img},
               ${surf.location}.
               The weather for today is ${data.summary}.
             </div>
@@ -57,48 +57,11 @@ App.surfInfo           = function(surf, marker) {
               <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="900" height="600" frameborder="0"></iframe>
             </div>
             <div role="tabpanel" class="tab-pane" id="gallery">
-
             </div>
             <div role="tabpanel" class="tab-pane" id="settings">
             </div>
           </div>`);
       $('.modal').modal('show');
-
-    // $.get(`http://localhost:3000/api/weather/${surf.lat}/${surf.lng}`)
-    //   .done(data => {
-    //     $('.modal-body').html(`
-    //     <ul class="nav nav-tabs" role="tablist">
-    //       <li role="presentation" class="active">
-    //         <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Overview</a>
-    //       </li>
-    //       <li role="presentation">
-    //         <a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a>
-    //       </li>
-    //       <li role="presentation">
-    //         <a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a>
-    //       </li>
-    //       <li role="presentation">
-    //         <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
-    //       </li>
-    //     </ul>
-    //
-    //     <!-- Tab panes -->
-    //     <div class="tab-content">
-    //       <div role="tabpanel" class="tab-pane active" id="home">
-    //         Welcome to ${surf.name},
-    //         ${surf.location}.
-    //         The weather for today is ${data.summary}.
-    //       </div>
-    //       <div role="tabpanel" class="tab-pane" id="weather">
-    //         <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="900" height="500" frameborder="0"></iframe>
-    //       </div>
-    //       <div role="tabpanel" class="tab-pane" id="gallery">
-    //
-    //       </div>
-    //       <div role="tabpanel" class="tab-pane" id="settings">
-    //       </div>
-    //     </div>`);
-    //     $('.modal').modal('show');
     });
   });
 };
@@ -137,10 +100,7 @@ App.initMap            = function() {
 App.register           = function(e) {
   if(e) e.preventDefault();
 
-  this.$main.html(`<div class='modal fade' tabindex='-1' role='dialog'>
-  <div class='modal-dialog' role='document'>
-  <div class='modal-content'>
-  <div class='modal-body'>
+  $('.modal-body').html(`
   <h2>Register</h2>
   <form method='post' action='/register'>
   <div class='form-group'>
@@ -168,11 +128,7 @@ App.register           = function(e) {
 
 App.login              = function(e) {
   if(e) e.preventDefault();
-  this.$main.html(`
-    <div class='modal fade' tabindex='-1' role='dialog'>
-    <div class='modal-dialog' role='document'>
-    <div class='modal-content'>
-    <div class='modal-body'>
+  $('.modal-body').html(`
     <h2>Login</h2>
     <form method='post' action='/login'>
     <div class='form-group'>

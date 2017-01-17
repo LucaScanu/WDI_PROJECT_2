@@ -1,7 +1,13 @@
 body {
+font-family: 'Original Surfer', cursive;
 margin: 0;
 width: 100%;
 height: 100vh;
+}
+
+.navbar-nav>li>a:hover {
+  background-color: transparent;
+  text-decoration: none;
 }
 
 #map {
@@ -11,12 +17,30 @@ height: 100vh;
 }
 
 .modal-content, .modal-body {
-  background: #f2f2f2;
+  background: #7B85AD;
   height: 80vh;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  text-align: center;
 }
+
+.modal-content, .modal-body, .form-group {
+  padding: 10px;
+}
+
+// .navbar-nav>li>a {
+//   width: 30%;
+// }
+//
+// .navbar-nav>li>a:hover {
+//   background-color: none;
+// }
+//
+// .nav>li>a>img {
+//   max-width: 30%;
+//   border-radius: 10px;
+// }
 
 .landingpage {
  background-image: url("../images/home.jpg");

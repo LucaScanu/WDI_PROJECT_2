@@ -106,3 +106,5 @@ Created a function and named it ajaxRequest to group al of our ajax requests: on
 
 Created a login function
 Created a loggedIn and a loggedOut function to differentiate between the two different states.
+
+Begin styling
