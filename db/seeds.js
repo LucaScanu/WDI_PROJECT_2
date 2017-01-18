@@ -1,7 +1,7 @@
 const mongoose      = require('mongoose');
+const config    = require('../config/config');
 
-const databaseUrl   = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/surferparadiseapi';
-mongoose.connect(databaseUrl);
+mongoose.connect(config.db);
 
 const Surf      = require('../models/surf');
 const Image     = require('../models/image');

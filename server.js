@@ -17,8 +17,8 @@ const apiRouter      = require('./config/apiRoutes');
 const webRouter      = require('./config/webRoutes');
 
 //*******connecting mongoose model************///
-const databaseUrl    = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/surferparadiseapi';
-mongoose.connect(databaseUrl);
+
+mongoose.connect(config.db);
 
 //********setting up middleware*********////
 app.use(morgan('dev'));
