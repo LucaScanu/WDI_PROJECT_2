@@ -5,6 +5,7 @@ const authentications = require('../controllers/authentications');
 const users           = require('../controllers/users');
 const surfs           = require('../controllers/surfs');
 const proxies         = require('../controllers/proxies');
+const images          = require('../controllers/images');
 
 router.route('/register')
   .post(authentications.register);
@@ -21,8 +22,8 @@ router.route('/users/:id')
 router.route('/surfs')
   .get(surfs.index);
 
-// router.route('/comments')
-//   .post(comments.create);
+router.route('/images')
+    .get(images.index);
 
 router.route('/weather/:lat/:lng')
   .get(proxies.weather);

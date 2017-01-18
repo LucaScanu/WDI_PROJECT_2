@@ -5,8 +5,8 @@ const surfSchema      = new mongoose.Schema({
   location: String,
   lat: String,
   lng: String,
-  img: String,
-  comments: [ { type: mongoose.Schema.ObjectId, ref: 'Comment' } ]
+  description: String,
+  img: String
 });
 
 surfSchema.set('toJSON', { getters: true, virtuals: false });

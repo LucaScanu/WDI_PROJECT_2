@@ -17,7 +17,15 @@ a{
   color: #f2f2f2;
 }
 
-.mainpic {
+h2 {
+  color: #fff;
+}
+
+.form-control, .btn.btn-primary {
+  border: 2px solid #0E2B41;
+}
+
+.surfpic {
   width: 558px;
   height: 350px;
 }
@@ -29,7 +37,7 @@ a{
 }
 
 .modal-content, .modal-body {
-  background: #7B85AD;
+  background: #46BCEC;
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -42,6 +50,10 @@ a{
   padding: 10px;
 }
 
+.tab-content>.active {
+  color: #fff;
+}
+
 div.navbar-header {
   padding: 10px;
 }
@@ -50,7 +62,7 @@ div.navbar-header {
   width: 600px;
 }
 
-.navbar-nav>li>a:hover {
+.nav>li>a:hover {
   background-color: transparent;
   text-decoration: none;
 }
@@ -60,7 +72,7 @@ ul.nav.navbar-nav {
 }
 
 li.nav-item {
-  width: 67px;
+  width: 75px;
 }
 
 ul.nav.navbar-nav.navbar-right {
@@ -68,11 +80,32 @@ ul.nav.navbar-nav.navbar-right {
 }
 
 .nav>li>a>img {
-  max-width: 70%;
-  border-radius: 15px;
-  // float: left;
+  max-width: 60%;
+  border-radius: 50px;
+}
+
+.navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 10px;
+}
+
+.navbar-nav>li>a:visited {
+  background-color: transparent;
+  text-decoration: none;
 }
 
 iframe {
   width: 100%;
+}
+
+.card-deck-wrapper {
+  display: block;
+  width: 50px;
+  
 }

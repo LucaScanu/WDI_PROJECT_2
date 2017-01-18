@@ -7,7 +7,7 @@ App.init               = function() {
   $('.register').on('click', this.register.bind(this));
   $('.login').on('click', this.login.bind(this));
   $('.logout').on('click', this.logout.bind(this));
-  $('.members').on('click', this.membersIndex.bind(this));
+  $('.members').on('click', this.imagesIndex.bind(this));
   $('.modal-body').on('submit', 'form', this.handleForm);
   if (this.getToken()) {
     this.loggedIn();
@@ -23,6 +23,7 @@ App.loggedIn           = function() {
   App.getSurfs();
   $('.modal').modal('hide');
   $('body').addClass('clear');
+  $('main').addClass('loggedIn');
   $('navbar-nav').addClass('clear');
 };
 
@@ -30,6 +31,7 @@ App.loggedOut          = function() {
   $('.loggedIn').hide();
   $('.loggedOut').show();
   $('body').removeClass('clear');
+  $('main').addClass('loggedOut');
   $('navbar-nav').removeClass('clear');
 };
 
@@ -52,12 +54,12 @@ App.surfInfo           = function(surf, marker) {
               Welcome to ${surf.name},
               ${surf.location},
               The weather for today is ${data.summary}.
-              <img class="mainpic" src="${surf.img}">
+              <img class="surfpic" src="${surf.img}">
             </div>
             <div role="tabpanel" class="tab-pane" id="weather">
               <iframe src="https://embed.windytv.com/?${surf.lat},${surf.lng},5,in:24,100m,waves,message,menu,marker,metric.wind.km/h" width="1000" height="700" frameborder="0"></iframe>
             </div>
-             <div role="tabpanel" class="tab-pane" id="gallery">
+            </div>
              </div>
              <div role="tabpanel" class="tab-pane" id="settings">
              </div>
@@ -101,7 +103,6 @@ App.initMap            = function() {
 
 App.register           = function(e) {
   if(e) e.preventDefault();
-
   $('.modal-body').html(`
   <h2>Register</h2>
   <form method='post' action='/register'>
@@ -131,7 +132,7 @@ App.register           = function(e) {
 App.login              = function(e) {
   if(e) e.preventDefault();
   $('.modal-body').html(`
-    <h2>Login</h2>
+    <h2>Enter</h2>
     <form method='post' action='/login'>
     <div class='form-group'>
     <input class='form-control' type='email' name='email' placeholder='Email'>
@@ -155,10 +156,10 @@ App.logout = function(e) {
   this.loggedOut();
 };
 
-App.membersIndex       = function(e) {
+App.imagesIndex       = function(e) {
   if(e) e.preventDefault();
 
-  const url = `${this.apiUrl}/users`;
+  const url = `${this.apiUrl}/images`;
 
   return this.ajaxRequest(url, 'get', null, data => {
     this.$main.html(`
@@ -168,16 +169,16 @@ App.membersIndex       = function(e) {
       </div>
     `);
     const $container = this.$main.find('.card-deck');
-    $.each(data.users, (i, user) => {
+    $.each(data.images, (i, image) => {
       $container.append(`
         <div class="card col-md-4">
-         <img class="card-img-top" src="#" alt="Card image cap">
+         <img class="card-img-top" src="${image.image}" alt="Card image cap">
          <div class="card-block">
-           <h4 class="card-title">${user.username}</h4>
            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+           <p class="card-text"><small class="text-muted"></small></p>
          </div>
        </div>`);
+      $('#map').hide();
     });
   });
 };
