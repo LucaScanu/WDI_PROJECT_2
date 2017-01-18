@@ -104,8 +104,18 @@ iframe {
   width: 100%;
 }
 
+
+
 .card-deck-wrapper {
   display: block;
-  width: 50px;
-  
+  width: 800px;
+}
+
+card col-md-4 {
+  width: 180px;
+  float: left;
+}
+.card-img-top {
+  width: 100px;
+  height: 100px;
 }

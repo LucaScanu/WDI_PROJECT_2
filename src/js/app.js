@@ -174,7 +174,7 @@ App.imagesIndex       = function(e) {
         <div class="card col-md-4">
          <img class="card-img-top" src="${image.image}" alt="Card image cap">
          <div class="card-block">
-           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+           <p class="card-text">This is one of the best surfing location in the world.</p>
            <p class="card-text"><small class="text-muted"></small></p>
          </div>
        </div>`);
