@@ -2,7 +2,7 @@ const App              = App || {};
 const google           = google;
 
 App.init               = function() {
-  this.apiUrl          = 'http://localhost:3000/api';
+  this.apiUrl          = `${window.location.origin}/api`;
   this.$main           = $('main');
   $('.register').on('click', this.register.bind(this));
   $('.login').on('click', this.login.bind(this));
@@ -37,7 +37,7 @@ App.loggedOut          = function() {
 
 App.surfInfo           = function(surf, marker) {
   google.maps.event.addListener(marker, 'click', () => {
-    this.ajaxRequest(`http://localhost:3000/api/weather/${surf.lat}/${surf.lng}`, 'get', null, data => {
+    this.ajaxRequest(`${this.apiUrl}/weather/${surf.lat}/${surf.lng}`, 'get', null, data => {
       $('.modal-body').html(`
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
@@ -86,7 +86,7 @@ App.loopSurfs          = function(data) {
 };
 
 App.getSurfs           = function() {
-  $.get('http://localhost:3000/api/surfs').done(this.loopSurfs);
+  $.get(`${this.apiUrl}/surfs`).done(this.loopSurfs);
 };
 
 App.initMap            = function() {
