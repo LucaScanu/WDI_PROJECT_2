@@ -9,115 +9,51 @@ I created a landing page for the website and users will only able to enter the w
 
 - Landing Page Picture
 
-<img src="/images/readme/landingpage.png">
+<img src="src/images/readme/landingpage.png">
 
 - Login form
 
-<img src="/images/readme/loginform.png"
+<img src="src/images/readme/loginform.png">
 
-- I will keep client and server side functions in one app.
+Once logged in the user is presented with a world map where custom icons show the locations of each surfing spot.
 
-- I begin building the server side of my authentication app
+<img src="src/images/readme/map.png">
 
-- First of all I have created a new repository in Github and cloned it from my terminal into the Development folder.
+The icons, once clicked will trigger a modal which displays the info available.
 
-run npm init
+<img src="src/images/readme/locationoverview.png">
 
-touch server.js
+<img src="src/images/readme/locationweather.png">
 
-run atom .
 
-touch gulpfile.js
-
-- Install all packgages needed:
-
-npm i express morgan cors body-parser mongoose bcrypt express-jwt validator jsonwebtoken request request-promise --save
-
-npm i gulp browser-sync gulp-babel gulp-imagemin gulp-sass gulp-clean-css gulp-uglify gulp-nodemon babel-cli babel-preset-es2015 --save-dev
-
-- Require installed packages in server.js and set up middleware
-
-- Create a config folder and corresponding files to handle routes and connect app to the local port:
-
-mkdir config
-
-touch config/config.js
-
-touch config/apiRoutes.js
-
-touch config/webRoutes.js
-
-export mongodb connection to the PORT in the file config.js
-
-require the config file into the app.js file
-
-run nodemon and test the app. At this point we should get the message 'Express has started on port: 3000' in our terminal.
-
-- Require express package in our apiRoutes.js and webRoutes.js files
-
-- Require apiRoutes and webRoutes in our express file
-
-- Create a controllers folder and corresponding files to define functions to handle routes:
-
-mkdir controllers
-
-touch controllers/authentications.js && users.js && statics.js && surfs.js
-
-- Create a models folder and corresponding files to create our database:
-
-- Require mongoose, bcrypt and validator in our user model file and mongoose in our surf model file
-
-- Create the two models for user and surf.
-
-- In our user model we are defining functions to store a clear password and encrypt it(passwordHash) and validate authentication of correctly entered usernames and passwords.
-
-- Define functions for the users and surfs controllers.
-
-- Link users/controllers functions to apiRoutes
-
-- define function for the statics controllers and link it up with the webRoutes file
-
-- Define functions for the authenticationsRegister and authenticationLogin for authentications controllers. IN this file we need to require the user model, the config file and the jsonwebtoken package. this package will create jwt tokens that will encrypt our clear passwords
-
-- Require authentications controllers into the apiRoutes file
-
-touch index.html
-
-- Require express-jwt package into our server.js file and set the middleware that will allows us to check for tokens
-
-- Test app with Insomnia if authenticationLogin and authenticationsRegister are working.
-
-- Create db folder and seeds.js folder. Created two entries and ran node db/seeds. tested it with Insomnia
-
-- Create src folder with js and scss folder and their files
-
-- Set up gulpfile
-
-- Link html file to stylesheets and scripts
-
-- Build a map objet in map.js to show the site's map in the html file
-
-- defined initMap;
-
-- As per documentation we are required to style the map via scss in order for it to show on the page.
-
-Create a function to display a pin to mark our surfs and after that create a function which I will call surfInfo that will add and display some info about our location when the marker is clicked.
-
-Got stuck in visualising the weather data I wanted in my info window and spent some time trying to get my head round it. Tried to use a proxy request to get the proper data but eventually had to be helped by Alex.
-
-Created a proxies controllers to house the promise request function and define the route into our routes file.
-
-Created a modal window to marker info instead of window
-
-Initiate authentications functions inside our main init function. Import a navigation bar from bootstrap.
-
-Created an App.register function to add a registration form to my html
-Created a function to listen to the submitting of the form and to create a jwt token on submission
-
-Created a function and named it ajaxRequest to group al of our ajax requests: one used in our membersIndex function and one used in our handleForm function
-
-Created a login function
-Created a loggedIn and a loggedOut function to differentiate between the two different states.
-
-Begin styling
+###Planning <br>
 - Wireframes available at https://generalassembly.mybalsamiq.com/projects/wdi-ldn-24/Surfing%20spots
+
+<img src="src/images/readme/homepageplan.png">
+<img src="src/images/readme/mapplan.png">
+<img src="src/images/readme/weatherplan.png">
+
+###API <br>
+The wireframes look slightly different from the final project mainly due to the fact that I couldn't get the API key on time for my project at WindyTV.com. Therefore, I used the DarkSky API to get the local weather info and a WindyTV widget to visualise the info. As shown in the above pictures.
+
+I wasn't happy with the set of data offered by the APIs I researched for the surfing spots therefore I decided to seed the data info for each location.
+I used the Google Maps API to display the locations worldwide which I then styled using a snazzymaps template (https://snazzymaps.com/). <br>
+
+##Technologies <hr>
+
+HTML5
+SCSS
+jQuery
+Node.js
+Express.js
+Gulp
+Bower
+GoogleMaps API
+DarkSky API
+
+###Future Improvements
+In the future I'd like to add more info for each location under the gallery section including the possibility to plan the ideal trip on how to get there to one or more locations.
+
+###Credits
+
+Many thanks to my course instructors Alex Chin and Rane Gowan for their help and advice on this project.
