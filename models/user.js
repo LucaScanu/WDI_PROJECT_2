@@ -12,7 +12,7 @@ const userSchema      = new mongoose.Schema({
 //***** password during registration even if it isn't accept by the model
 userSchema
 .virtual('password')
-//**we are calling the function that will change our clear password into
+//** we are calling the function that will change our clear password into
 //** passwordHash
 .set(setPassword);
 

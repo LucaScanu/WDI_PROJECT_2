@@ -1,8 +1,20 @@
-# WDI_PROJECT_2
+WDI_PROJECT_2
 
-- Wireframes available at https://generalassembly.mybalsamiq.com/projects/wdi-ldn-24/Surfing%20spots
+##Surfer's Paradise <hr>
 
-- A site showcasing 25 of the best surfing spots around the world pinpointed in a world map. Every pin showing info for local weather and the location itself. The site will have an authentication page for registering and login.
+###Overview <br>
+
+- A site showcasing 25 of the best surfing spots around the world pinpointed in a world map. A modal will appear once a map marker is clicked. The modal will show basic info for local weather through the DarkSky API and visualise the actual weather through the WindyTV widget. The site has a registering and login in page with authentication.
+I created a landing page for the website and users will only able to enter the website only once they registered or logged in.
+
+- Landing Page Picture
+
+<img src="/images/readme/landingpage.png">
+
+- Login form
+
+<img src="/images/readme/loginform.png"
+
 - I will keep client and server side functions in one app.
 
 - I begin building the server side of my authentication app
@@ -108,3 +120,4 @@ Created a login function
 Created a loggedIn and a loggedOut function to differentiate between the two different states.
 
 Begin styling
+- Wireframes available at https://generalassembly.mybalsamiq.com/projects/wdi-ldn-24/Surfing%20spots
