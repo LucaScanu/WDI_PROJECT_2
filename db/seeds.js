@@ -1,7 +1,9 @@
 const mongoose  = require('mongoose');
 const config    = require('../config/config');
 
-mongoose.connect(config.db);
+const promise = mongoose.connect(config.db, {
+  useMongoClient: true
+});
 
 const Surf      = require('../models/surf');
 const Image     = require('../models/image');

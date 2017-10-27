@@ -18,7 +18,10 @@ const webRouter      = require('./config/webRoutes');
 
 //*******connecting mongoose model************///
 
-mongoose.connect(config.db);
+const promise = mongoose.connect(config.db, {
+  useMongoClient: true
+});
+// mongoose.connect(config.db);
 
 //********setting up middleware*********////
 app.use(morgan('dev'));
